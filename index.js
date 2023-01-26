@@ -5,50 +5,49 @@ function getComputerChoice() {
   return options[random];
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = "RocK";
+let win = "YOU win!",
+  lose = "You lose!",
+  tight = "TIGHT!";
 
 function playRound(computerSelection, playerSelection) {
   playerSelection = playerSelection.toLowerCase();
   if (computerSelection === "rock") {
     if (playerSelection === "paper") {
-      return "YOU win! Paper beats rock.";
+      return `${win} Paper beats rock.`;
     } else if (playerSelection === "scissors") {
-      return "You lose! Rock beats scissors";
+      return `${lose} Rock beats scissors`;
     } else {
-      return "TIGHT!";
+      return tight;
     }
   }
 
   if (computerSelection === "paper") {
     if (playerSelection === "scissors") {
-      return "YOU win! Scissors beats paper.";
+      return `${win} Scissors beats paper.`;
     } else if (playerSelection === "rock") {
-      return "You lose! Paper beats rock";
+      return `${lose} Paper beats rock`;
     } else {
-      return "TIGHT!";
+      return tight;
     }
   }
 
   if (computerSelection === "scissors") {
     if (playerSelection === "rock") {
-      return "YOU win! Rock beats scissors.";
+      return `${win} Rock beats scissors.`;
     } else if (playerSelection === "paper") {
-      return "You lose! Scissors beats paper";
+      return `${lose} Scissors beats paper.`;
     } else {
-      return "TIGHT!";
+      return tight;
     }
   }
 }
-
-// console.log(playRound(computerSelection, playerSelection));
 
 function game() {
   let computerScore = 0,
     playerScore = 0;
   for (let i = 0; i < 5; i++) {
-    computerSelection = getComputerChoice();
-    playerSelection = prompt("What's your thing?");
+    let computerSelection = getComputerChoice();
+    let playerSelection = prompt("Enter your imput. Rock, paper or scissors?");
     let result = playRound(computerSelection, playerSelection);
 
     if (result.includes("YOU win!")) {
