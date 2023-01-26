@@ -6,39 +6,59 @@ function getComputerChoice() {
 }
 
 let computerSelection = getComputerChoice();
-let playerSelection = "rock";
+let playerSelection = "RocK";
 
-function play(computerSelection, playerSelection) {
+function playRound(computerSelection, playerSelection) {
+  playerSelection = playerSelection.toLowerCase();
   if (computerSelection === "rock") {
     if (playerSelection === "paper") {
-      console.log("YOU win! Paper beats rock.");
+      return "YOU win! Paper beats rock.";
     } else if (playerSelection === "scissors") {
-      console.log("You lose! Rock beats scissors");
+      return "You lose! Rock beats scissors";
     } else {
-      console.log("TIGHT! Another game?");
+      return "TIGHT!";
     }
   }
 
   if (computerSelection === "paper") {
     if (playerSelection === "scissors") {
-      console.log("YOU win! Scissors beats paper.");
+      return "YOU win! Scissors beats paper.";
     } else if (playerSelection === "rock") {
-      console.log("You lose! Paper beats rock");
+      return "You lose! Paper beats rock";
     } else {
-      console.log("TIGHT! Another game?");
+      return "TIGHT!";
     }
   }
 
   if (computerSelection === "scissors") {
     if (playerSelection === "rock") {
-      console.log("YOU win! Rock beats scissors.");
+      return "YOU win! Rock beats scissors.";
     } else if (playerSelection === "paper") {
-      console.log("You lose! Scissors beats paper");
+      return "You lose! Scissors beats paper";
     } else {
-      console.log("TIGHT! Another game?");
+      return "TIGHT!";
     }
   }
 }
 
-console.log("hey");
-play(computerSelection, playerSelection);
+// console.log(playRound(computerSelection, playerSelection));
+
+function game() {
+  let computerScore = 0,
+    playerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    computerSelection = getComputerChoice();
+    playerSelection = prompt("What's your thing?");
+    let result = playRound(computerSelection, playerSelection);
+
+    if (result.includes("YOU win!")) {
+      playerScore++;
+    } else if (result.includes("You lose!")) {
+      computerScore++;
+    }
+
+    console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
+  }
+}
+
+game();
