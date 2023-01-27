@@ -9,6 +9,9 @@ let win = "YOU win!",
   lose = "You lose!",
   tie = "Tie game!";
 
+let computerScore = 0,
+  playerScore = 0;
+
 function playRound(computerSelection, playerSelection) {
   playerSelection = playerSelection.toLowerCase();
   if (computerSelection === "rock") {
@@ -42,23 +45,36 @@ function playRound(computerSelection, playerSelection) {
   }
 }
 
-function game() {
-  let computerScore = 0,
-    playerScore = 0;
+const userInput = document.querySelector(".user-input");
 
-  while (computerScore + playerScore < 5) {
-    let computerSelection = getComputerChoice();
-    let playerSelection = prompt("Enter your input. Rock, paper or scissors?");
-    let result = playRound(computerSelection, playerSelection);
+userInput.addEventListener("click", (e) => {
+  let computerSelection = getComputerChoice();
+  let playerSelection = e.target.id;
+  let result = playRound(computerSelection, playerSelection);
 
-    if (result.includes("YOU win!")) {
-      playerScore++;
-    } else if (result.includes("You lose!")) {
-      computerScore++;
-    }
+  // add selection to score board
+  let playerSelectionImg = document.createElement("img");
+  playerSelectionImg.src = `./images/${playerSelection}.png`;
+  let playerScoreEl = document.querySelector(".player");
+  playerScoreEl.appendChild(playerSelectionImg);
 
-    console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
+  if (computerScore < 5 || playerScore < 5) {
+    game(result);
   }
-}
+});
 
-game();
+function game(result) {
+  if (result.includes("YOU win!")) {
+    playerScore++;
+  } else if (result.includes("You lose!")) {
+    computerScore++;
+  }
+
+  console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
+
+  let playerScoreEl = document.querySelector(".player");
+  playerScoreEl.textContent = `Player: ${playerScore}`;
+
+  let computerScoreEl = document.querySelector(".computer");
+  computerScoreEl.textContent = `Computer: ${computerScore}`;
+}
