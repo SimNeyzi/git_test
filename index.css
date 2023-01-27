@@ -7,8 +7,17 @@
 .user-input {
   display: flex;
   justify-content: space-evenly;
-  margin: 20rem auto;
+  margin: 2rem auto;
   width: 80rem;
   height: 15rem;
   border: 2px solid red;
+}
+
+.score-board {
+  display: flex;
+}
+
+.score-board__item {
+  margin: auto;
+  font-size: 3rem;
 }
