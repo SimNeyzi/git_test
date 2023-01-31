@@ -60,17 +60,32 @@ userInput.addEventListener("click", (e) => {
 });
 
 function showSelections(playerSelection, computerSelection) {
+  // player
   let playerSelectionImg = document.createElement("img");
   playerSelectionImg.src = `./images/${playerSelection}.png`;
-  playerSelectionImg.classList.add("user-inputt");
+  playerSelectionImg.classList.add("player-selection__img");
 
-  let playerScoreEl = document.querySelector(".player-selection-img");
+  let playerScoreEl = document.querySelector(".player-selection");
 
   if (playerScoreEl.hasChildNodes()) {
-    let toRemove = playerScoreEl.querySelector(".user-inputt");
+    let toRemove = playerScoreEl.querySelector(".player-selection__img");
     toRemove.remove();
   }
   playerScoreEl.appendChild(playerSelectionImg);
+
+  //computer
+  let computerSelectionImg = document.createElement("img");
+  computerSelectionImg.src = `./images/${computerSelection}.png`;
+  computerSelectionImg.classList.add("computer-selection__img");
+
+  let computerScoreEl = document.querySelector(".computer-selection");
+
+  if (computerScoreEl.hasChildNodes()) {
+    let toRemove = computerScoreEl.querySelector(".computer-selection__img");
+    toRemove.remove();
+  }
+
+  computerScoreEl.appendChild(computerSelectionImg);
 }
 
 function game(result) {
@@ -82,9 +97,11 @@ function game(result) {
 
   console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
 
-  let playerScoreEl = document.querySelector(".player");
+  let playerScoreEl = document.querySelector(".score-board__item-player-score");
   playerScoreEl.textContent = `Player: ${playerScore}`;
 
-  let computerScoreEl = document.querySelector(".computer");
+  let computerScoreEl = document.querySelector(
+    ".score-board__item-computer-score"
+  );
   computerScoreEl.textContent = `Computer: ${computerScore}`;
 }

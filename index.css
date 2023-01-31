@@ -15,9 +15,26 @@
 
 .score-board {
   display: flex;
+  justify-content: space-around;
 }
 
-.score-board__item {
-  margin: auto;
+.score-board__item-player,
+.score-board__item-computer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 3rem;
+}
+
+.player-selection,
+.computer-selection {
+  display: flex;
+  justify-content: center;
+  border: 2px solid red;
+}
+
+.computer-selection__img,
+.player-selection__img {
+  width: 10rem;
+  height: auto;
 }
