@@ -52,16 +52,26 @@ userInput.addEventListener("click", (e) => {
   let playerSelection = e.target.id;
   let result = playRound(computerSelection, playerSelection);
 
-  // add selection to score board
-  let playerSelectionImg = document.createElement("img");
-  playerSelectionImg.src = `./images/${playerSelection}.png`;
-  let playerScoreEl = document.querySelector(".player");
-  playerScoreEl.appendChild(playerSelectionImg);
+  showSelections(playerSelection, computerSelection);
 
   if (computerScore < 5 || playerScore < 5) {
     game(result);
   }
 });
+
+function showSelections(playerSelection, computerSelection) {
+  let playerSelectionImg = document.createElement("img");
+  playerSelectionImg.src = `./images/${playerSelection}.png`;
+  playerSelectionImg.classList.add("user-inputt");
+
+  let playerScoreEl = document.querySelector(".player-selection-img");
+
+  if (playerScoreEl.hasChildNodes()) {
+    let toRemove = playerScoreEl.querySelector(".user-inputt");
+    toRemove.remove();
+  }
+  playerScoreEl.appendChild(playerSelectionImg);
+}
 
 function game(result) {
   if (result.includes("YOU win!")) {
