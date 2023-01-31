@@ -62,10 +62,15 @@ userInput.addEventListener("click", (e) => {
 function showSelections(playerSelection, computerSelection) {
   let playerSelectionImg = document.createElement("img");
   playerSelectionImg.src = `./images/${playerSelection}.png`;
-  playerSelectionImg.classList.add("user-input");
+  playerSelectionImg.classList.add("user-inputt");
 
-  let playerScoreEl = document.querySelector(".score-board");
-  playerScoreEl.prepend(playerSelectionImg);
+  let playerScoreEl = document.querySelector(".player-selection-img");
+
+  if (playerScoreEl.hasChildNodes()) {
+    let toRemove = playerScoreEl.querySelector(".user-inputt");
+    toRemove.remove();
+  }
+  playerScoreEl.appendChild(playerSelectionImg);
 }
 
 function game(result) {
