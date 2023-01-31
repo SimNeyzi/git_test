@@ -54,8 +54,11 @@ userInput.addEventListener("click", (e) => {
 
   showSelections(playerSelection, computerSelection);
 
+  const scoreMessage = document.querySelector(".score-board__message");
+
   if (computerScore < 5 || playerScore < 5) {
     game(result);
+    scoreMessage.textContent = result;
   }
 });
 
@@ -95,7 +98,7 @@ function game(result) {
     computerScore++;
   }
 
-  console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
+  // console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
 
   let playerScoreEl = document.querySelector(".score-board__item-player-score");
   playerScoreEl.textContent = `Player: ${playerScore}`;
