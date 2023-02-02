@@ -56,11 +56,39 @@ userInput.addEventListener("click", (e) => {
 
   const scoreMessage = document.querySelector(".score-board__message");
 
-  if (computerScore < 5 || playerScore < 5) {
+  if (computerScore < 5 && playerScore < 5) {
     game(result);
     scoreMessage.textContent = result;
   }
+
+  // show alert
+  if (computerScore === 5) {
+    endGameModal();
+  }
+
+  if (playerScore === 5) {
+    endGameModal();
+  }
+
+  // renew scores
 });
+
+function endGameModal() {
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+
+  const closeBtn = document.createElement("button");
+  closeBtn.classList.add("close-modal-btn");
+
+  const scoreBoard = document.querySelector(".score-board");
+
+  scoreBoard.appendChild(overlay);
+  overlay.appendChild(modal);
+  modal.appendChild(closeBtn);
+}
 
 function showSelections(playerSelection, computerSelection) {
   // player
@@ -94,12 +122,16 @@ function showSelections(playerSelection, computerSelection) {
 function game(result) {
   if (result.includes("YOU win!")) {
     playerScore++;
-  } else if (result.includes("You lose!")) {
+  }
+
+  if (result.includes("You lose!")) {
     computerScore++;
   }
 
-  // console.log(`Player: ${playerScore} - Computer: ${computerScore} `);
+  updateScoreBoard();
+}
 
+function updateScoreBoard() {
   let playerScoreEl = document.querySelector(".score-board__item-player-score");
   playerScoreEl.textContent = `Player: ${playerScore}`;
 

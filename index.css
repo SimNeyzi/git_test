@@ -66,3 +66,27 @@
   font-size: 2rem;
   font-family: "Cormorant Upright", serif;
 }
+
+.overlay {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid red;
+}
+
+.modal {
+  max-width: 600px;
+  height: 300px;
+  margin: auto;
+  background-color: aliceblue;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
