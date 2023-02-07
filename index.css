@@ -7,6 +7,8 @@
   scroll-behavior: smooth;
   max-width: 100%;
   overflow-x: hidden;
+  background-color: rgb(169, 153, 133);
+  color: rgb(37, 35, 35);
 }
 
 .header__wrapper {
@@ -17,7 +19,7 @@
 }
 
 .game__header-h1 {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 .game__header-h2 {
@@ -63,12 +65,12 @@
 }
 
 .score-board__message {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family: "Cormorant Upright", serif;
 }
 
 .overlay {
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -80,8 +82,8 @@
 }
 
 .modal {
-  max-width: 600px;
-  height: 300px;
+  max-width: 40rem;
+  height: 20rem;
   margin: auto;
   background-color: aliceblue;
   position: absolute;
@@ -89,4 +91,21 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.close-modal-btn {
+  display: flex;
+  justify-content: center;
+  height: 5rem;
+  width: 10rem;
+  padding: 2rem;
+  margin: 5rem auto;
+  font-size: 1rem;
+}
+
+.game-result-text {
+  text-align: center;
+  background: none;
+  font-size: 2rem;
+  margin: 2rem auto;
 }
