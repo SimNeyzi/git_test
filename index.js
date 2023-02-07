@@ -69,8 +69,6 @@ userInput.addEventListener("click", (e) => {
   if (playerScore === 5) {
     endGameModal();
   }
-
-  // renew scores
 });
 
 function endGameModal() {
@@ -80,14 +78,41 @@ function endGameModal() {
   const modal = document.createElement("div");
   modal.classList.add("modal");
 
+  let gameResult = "";
+  if (computerScore === 1) {
+    gameResult = "You lose -_-";
+  }
+
+  if (playerScore === 1) {
+    gameResult = "YOU WIN!";
+  }
+
+  const gameResultText = document.createElement("div");
+  gameResultText.classList.add("game-result-text");
+  gameResultText.textContent = gameResult;
+
   const closeBtn = document.createElement("button");
   closeBtn.classList.add("close-modal-btn");
+  closeBtn.textContent = "New game";
 
   const scoreBoard = document.querySelector(".score-board");
 
   scoreBoard.appendChild(overlay);
+  document.querySelector(".overlay").style.display = "block";
   overlay.appendChild(modal);
+  modal.appendChild(gameResultText);
   modal.appendChild(closeBtn);
+
+  closeBtn.addEventListener("click", () => newGame());
+}
+
+function newGame() {
+  document.querySelector(".overlay").style.display = "none";
+  playerScore = 0;
+  computerScore = 0;
+  updateScoreBoard();
+  const scoreMessage = document.querySelector(".score-board__message");
+  scoreMessage.textContent = "";
 }
 
 function showSelections(playerSelection, computerSelection) {
