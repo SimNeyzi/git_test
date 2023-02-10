@@ -62,11 +62,7 @@ userInput.addEventListener("click", (e) => {
   }
 
   // show alert
-  if (computerScore === 5) {
-    endGameModal();
-  }
-
-  if (playerScore === 5) {
+  if (computerScore === 5 || playerScore === 5) {
     endGameModal();
   }
 });
@@ -79,11 +75,9 @@ function endGameModal() {
   modal.classList.add("modal");
 
   let gameResult = "";
-  if (computerScore === 1) {
+  if (computerScore === 5) {
     gameResult = "You lose -_-";
-  }
-
-  if (playerScore === 1) {
+  } else if (playerScore === 5) {
     gameResult = "YOU WIN!";
   }
 
@@ -107,7 +101,9 @@ function endGameModal() {
 }
 
 function newGame() {
-  document.querySelector(".overlay").style.display = "none";
+  document.querySelector(".overlay").remove();
+  // document.querySelector(".overlay").style.display = "none";
+
   playerScore = 0;
   computerScore = 0;
   updateScoreBoard();
